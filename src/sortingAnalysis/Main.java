@@ -21,7 +21,7 @@ public class Main {
             }
         });
 		
-		while (n <= 100000) {
+		while (n <= 10000) {
 			
 			Integer[] a = new Integer[n];
 			
@@ -34,6 +34,12 @@ public class Main {
 			algos.split(test,0,a.length-1);
 			stop = System.currentTimeMillis();
 			LineChart.dataset.addValue(stop-start, "Merge Sort", Integer.toString(n));
+			
+			test = a.clone();
+			start = System.currentTimeMillis();
+			algos.qSplit(test,0,a.length-1);
+			stop = System.currentTimeMillis();
+			LineChart.dataset.addValue(stop-start, "Quick Sort", Integer.toString(n));
 			
 			test = a.clone();
 			start = System.currentTimeMillis();
@@ -53,8 +59,13 @@ public class Main {
 			stop = System.currentTimeMillis();
 			LineChart.dataset.addValue(stop-start, "Bubble Sort", Integer.toString(n));
 			
-			n*=10;
+			n*=5;
 		}
+		
+		/*Integer a[] = {10,4,7,2,8,5,1,2,6};
+		new SortingAlgorithms().qSplit(a,0,a.length-1);
+		for(int i=0;i<a.length;i++)
+			System.out.print(" "+a[i]);*/
 		
 	}	
 

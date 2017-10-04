@@ -108,5 +108,34 @@ public class SortingAlgorithms {
 		}
 	}
 	
+	public int partition(Integer[] a, int left, int right) {
+		int pivot = a[left];
+		int i = left;
+		int j = right;
+		while(i < j) {
+			while(i < right && a[i] <= pivot) {
+				i++;
+			}
+			while(a[j] > pivot) {
+				j--;
+			}
+			if (i < j) {
+				int t = a[i];
+				a[i] = a[j];
+				a[j] = t;
+			}
+		}
+		a[left] = a[j];
+		a[j] = pivot;
+		return j;
+	}
+	
+	public void qSplit(Integer[] a, int left, int right) {
+		if(left < right) {
+			int p = partition(a, left, right);
+			qSplit(a, left, p-1);
+			qSplit(a,p+1,right);
+		}
+	}
 	
 }
